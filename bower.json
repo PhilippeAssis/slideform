@@ -1,0 +1,28 @@
+{
+  "name": "slideform",
+  "authors": [
+    "Philippe Assis <assis@philippeassis.com>"
+  ],
+  "description": "Library for visual enhancement and experience for web forms",
+  "main": "dist/js/slideform.js",
+  "moduleType": [],
+  "keywords": [
+    "form",
+    "slide"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "stylus-essential": "*",
+    "jquery": "^2.2.1",
+    "bootstrap": "^3.3.6",
+    "font-awesome": "^4.5.0"
+  }
+}

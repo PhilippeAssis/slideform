@@ -1,0 +1,146 @@
+<html>
+<head>
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bower_components/bootswatch-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../dist/css/slideform.css">
+    <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/autoprecode.css">
+    <link rel="stylesheet" href="css/example.css">
+</head>
+<body>
+<div id="myForm">
+    <section>
+        <div class="title">
+            <h3>Bem vindo ao Slide Form</h3>
+        </div>
+        <div class="body">
+            <p>O Slide Form é uma biblioteca para aprimoramento do visual e experiencia para formulários web.<br>Tem com
+                objetivo transformar um simples formulário em um formulário dinamico, bonito e simples.</p>
+        </div>
+        <div class="options">
+            <a href="" class="btn btn-default next">Próximo</a>
+        </div>
+    </section>
+    <form>
+        <div class="title">
+            <h3>Esse é um exemplo simples de formulário</h3>
+        </div>
+        <div class="body">
+            <div class="form-group">
+                <input name="texto" type="text" class="form-control" placeholder="Digite qualquer coisa aqui!">
+            </div>
+        </div>
+        <div class="options">
+            <a href="" class="btn btn-default prev">Voltar</a>
+            <a href="" class="btn btn-success next">Próximo</a>
+        </div>
+    </form>
+    <form>
+        <div class="title">
+            <h3>Agora marque qualquer coisa</h3>
+        </div>
+        <div class="body">
+            <div class="checkbox-inline">
+                <label>
+                    <input name="qualquer-1" type="checkbox"> Qualquer coisa 1
+                </label>
+            </div>
+            <div class="checkbox-inline">
+                <label>
+                    <input name="qualquer-2" type="checkbox"> Qualquer coisa 2
+                </label>
+            </div>
+            <div class="checkbox-inline">
+                <label>
+                    <input name="qualquer-3" type="checkbox"> Qualquer coisa 3
+                </label>
+            </div>
+            <div class="checkbox-inline">
+                <label>
+                    <input name="qualquer-4" type="checkbox"> Qualquer coisa 4
+                </label>
+            </div>
+        </div>
+        <div class="options">
+            <a href="" class="btn btn-default prev">Voltar</a>
+            <a href="" class="btn btn-success next">Próximo</a>
+        </div>
+    </form>
+    <section data-name="sendForm" class="no-autoprecode">
+        <div class="title">
+            <h3>Antes de enviar nosso formulário, vamos dar uma olhada nesse código</h3>
+        </div>
+        <div class="body">
+            <p>
+                O código a baixo é um exemplo do envio do formulário.<br>
+                Primeiro ele identifica qual o quadro que vai enviar o fomulário, no nosso caso o "sendForm" depois ele pega todos os valores usando <stron>this.result()</stron>, envia o formulário (essa é a parte comentada, nesse exemplo ele só exibe os dados enviados no próximo quadro) e passa para o próximo quadro usando <strong>this.nextSection()</strong>
+            </p>
+            <pre class="no-autoprecode">
+var myForm = $("#myForm").slideform();
+
+myForm.beforeNext = function () {
+    if (this.current.name == 'sendForm') {
+        var result = this.result();
+        $('#result').text(result);
+
+        /*
+        $.post('submit.php', result, function (data) {
+            console.log(data)
+        })
+        */
+
+        this.nextSection()
+    }
+
+    return true;
+}
+            </pre>
+        </div>
+        <div class="options">
+            <a href="" class="btn btn-default prev">Voltar</a>
+            <a href="" class="btn btn-success next">Próximo</a>
+        </div>
+    </section>
+    <section class="no-autoprecode">
+        <div class="title">
+            <h3>Veja os seus dados enviados</h3>
+        </div>
+        <div class="body">
+            <pre id="result"></pre>
+        </div>
+    </section>
+
+</div>
+
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../dist/js/slideform.js"></script>
+<script src="js/autoprecode.js"></script>
+<script>
+    $(function () {
+        $(document).autoprecode('section, form');
+
+        var myForm = $("#myForm").slideform();
+
+        myForm.beforeNext = function () {
+            console.log('beforeNext')
+            if (this.current.name == 'sendForm') {
+                console.log('sendForm')
+                var result = this.result();
+                console.log(myForm.result())
+                $('#result').text(JSON.stringify(result));
+
+                /*
+                $.post('submit.php', result, function (data) {
+                    console.log(data)
+                })
+                */
+            }
+
+            return true;
+        }
+    })
+</script>
+
+
+</body>
+</html>

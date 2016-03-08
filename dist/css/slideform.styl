@@ -1,0 +1,152 @@
+@import "../../bower_components/stylus-essential/essential.styl"
+
+*
+  e-transition(all, 1s)
+
+.slide-form
+  .finish
+    display none
+  .start
+    display block
+  .options
+    clear left
+    float left
+    width 100%;
+    
+  .only-review
+    display none
+
+  .no-review, .only-form, .status
+    display block
+
+  &.no-animate
+    e-transition(left top bottom right , 0s)
+    *
+      e-transition(left top bottom right , 0s)
+  &.review
+    .only-review
+      display block
+    .no-review, .only-form, .status
+      display none
+    .slide-form-item
+      e-transition(left top bottom right , 0s)
+      position static
+      margin-bottom 30px
+      transform none
+      margin 0 auto
+      .options
+        display none
+      .yes,.no
+        e-transition(all, 0.05s)
+        margin 20px
+        opacity 0.5
+        &.active
+          opacity 1
+
+  .slide-form-item
+    position fixed
+    top 50%
+    transform translate(-50%, -50%)
+    width 100vw
+    height auto
+    max-height 100vh
+    padding 10px 10px 40px 10px
+    overflow auto
+    @media only screen and (min-width : e-bootstrap-sm)
+      width 70vw
+      height auto
+      padding 10px 10px 10px 10px
+    @media only screen and (min-width : e-bootstrap-md)
+      width 50vw
+    &.center
+      left 50%
+    &.right
+      left 200%
+    &.left
+      left -200%
+
+    .title
+      float left
+      width calc(100% - 10px)
+      text-align center
+      padding 10px
+      h1, h2, h3
+        float left
+        width 100%
+
+    .body
+      margin-top 20px
+      padding 10px
+      width calc(100% - 10px)
+      float left
+
+    .send
+      float left
+      clear left
+      margin-top 50px
+      width 100%
+      text-align center
+
+  .next, .end
+    float right
+    margin-top 20px
+  .prev
+    margin-top 20px
+    float left
+    clear left
+  .init
+    margin-top 20px
+    float none
+
+  .yes,.no
+    e-transition(all, 0.05s)
+    margin 20px
+
+  .listSelect
+    .groups
+      list-style none
+      list-style-position inside
+      margin 0
+      padding 0
+      text-align center
+      li
+        display inline
+        a
+          word-break break-all
+          e-transition(all, 0.2s)
+          width 100%
+          @media only screen and (min-width : e-bootstrap-sm)
+            width 50%
+          @media only screen and (min-width : e-bootstrap-md)
+            width 33%
+            padding 20px 20px
+            text-decoration none
+            color #FFFFFF
+            float left
+          &:hover,&.active
+            background-color #FFFFFF
+            color #666666
+
+  .status
+    width 100%
+    position fixed
+    height 30px
+    padding-top 5px
+    bottom  0
+    left 50%
+    transform translate(-50%, 0%)
+    text-align center
+    background-color #111111
+    @media only screen and (min-width : e-bootstrap-sm)
+      bottom  5%
+      background-color transparent
+    ul
+      margin 0
+      padding 0
+      list-style none
+      list-style-position inside
+      li
+        display inline
+        margin 5px
+        i
+          color #ffffff
