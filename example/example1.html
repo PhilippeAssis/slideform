@@ -14,16 +14,16 @@
             <h3>Bem vindo ao Slide Form</h3>
         </div>
         <div class="body">
-            <p>O Slide Form È uma biblioteca para aprimoramento do visual e experiencia para formul·rios web.<br>Tem com
-                objetivo transformar um simples formul·rio em um formul·rio dinamico, bonito e simples.</p>
+            <p>O Slide Form √© uma biblioteca para aprimoramento do visual e experiencia para formul√°rios web.<br>Tem com
+                objetivo transformar um simples formul√°rio em um formul√°rio dinamico, bonito e simples.</p>
         </div>
         <div class="options">
-            <a href="" class="btn btn-default next">PrÛximo</a>
+            <a href="" class="btn btn-default next">Pr√≥ximo</a>
         </div>
     </section>
     <form>
         <div class="title">
-            <h3>Esse È um exemplo simples de formul·rio</h3>
+            <h3>Esse √© um exemplo simples de formul√°rio</h3>
         </div>
         <div class="body">
             <div class="form-group">
@@ -32,7 +32,7 @@
         </div>
         <div class="options">
             <a href="" class="btn btn-default prev">Voltar</a>
-            <a href="" class="btn btn-success next">PrÛximo</a>
+            <a href="" class="btn btn-success next">Pr√≥ximo</a>
         </div>
     </form>
     <form>
@@ -63,17 +63,53 @@
         </div>
         <div class="options">
             <a href="" class="btn btn-default prev">Voltar</a>
-            <a href="" class="btn btn-success next">PrÛximo</a>
+            <a href="" class="btn btn-success next">Pr√≥ximo</a>
+        </div>
+    </form>
+    <form class="listSelect">
+        <input name="list" type="hidden" required>
+        <div class="title">
+            <h3>Selecinem um item</h3>
+        </div>
+        <div class="body">
+                <ul class="groups">
+                    <li>
+                        <a data-value="1">Item 1</a>
+                    </li>
+                    <li>
+                        <a data-value="2">Item 2</a>
+                    </li>
+                    <li>
+                        <a data-value="3">Item 3</a>
+                    </li>
+                    <li>
+                        <a data-value="4">Item 4</a>
+                    </li>
+                    <li>
+                        <a data-value="5">Item 5</a>
+                    </li>
+                    <li>
+                        <a data-value="6">Item 6</a>
+                    </li>
+                </ul>
+        </div>
+        <div class="options">
+            <a href="" class="btn btn-default prev">Voltar</a>
+            <a href="" class="btn btn-success next">Pr√≥ximo</a>
         </div>
     </form>
     <section data-name="sendForm" class="no-autoprecode">
         <div class="title">
-            <h3>Antes de enviar nosso formul·rio, vamos dar uma olhada nesse cÛdigo</h3>
+            <h3>Antes de enviar nosso formul√°rio, vamos dar uma olhada nesse c√≥digo</h3>
         </div>
         <div class="body">
             <p>
-                O cÛdigo a baixo È um exemplo do envio do formul·rio.<br>
-                Primeiro ele identifica qual o quadro que vai enviar o fomul·rio, no nosso caso o "sendForm" depois ele pega todos os valores usando <stron>this.result()</stron>, envia o formul·rio (essa È a parte comentada, nesse exemplo ele sÛ exibe os dados enviados no prÛximo quadro) e passa para o prÛximo quadro usando <strong>this.nextSection()</strong>
+                O c√≥digo a baixo √© um exemplo do envio do formul√°rio.<br>
+                Primeiro ele identifica qual o quadro que vai enviar o fomul√°rio, no nosso caso o "sendForm" depois ele
+                pega todos os valores usando
+                <stron>this.result()</stron>
+                , envia o formul√°rio (essa √© a parte comentada, nesse exemplo ele s√≥ exibe os dados enviados no pr√≥ximo
+                quadro) e passa para o pr√≥ximo quadro usando <strong>this.nextSection()</strong>
             </p>
             <pre class="no-autoprecode">
 var myForm = $("#myForm").slideform();
@@ -98,7 +134,7 @@ myForm.beforeNext = function () {
         </div>
         <div class="options">
             <a href="" class="btn btn-default prev">Voltar</a>
-            <a href="" class="btn btn-success next">PrÛximo</a>
+            <a href="" class="btn btn-success next">Pr√≥ximo</a>
         </div>
     </section>
     <section class="no-autoprecode">
@@ -118,9 +154,7 @@ myForm.beforeNext = function () {
 <script>
     $(function () {
         $(document).autoprecode('section, form');
-
         var myForm = $("#myForm").slideform();
-
         myForm.beforeNext = function () {
             console.log('beforeNext')
             if (this.current.name == 'sendForm') {
@@ -128,14 +162,12 @@ myForm.beforeNext = function () {
                 var result = this.result();
                 console.log(myForm.result())
                 $('#result').text(JSON.stringify(result));
-
                 /*
-                $.post('submit.php', result, function (data) {
-                    console.log(data)
-                })
-                */
+                 $.post('submit.php', result, function (data) {
+                 console.log(data)
+                 })
+                 */
             }
-
             return true;
         }
     })

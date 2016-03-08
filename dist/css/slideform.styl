@@ -12,7 +12,7 @@
     clear left
     float left
     width 100%;
-    
+
   .only-review
     display none
 
@@ -105,14 +105,16 @@
           word-break break-all
           e-transition(all, 0.2s)
           width 100%
+          padding 20px 20px
+          text-decoration none
+          float left
+          cursor pointer
+
           @media only screen and (min-width : e-bootstrap-sm)
             width 50%
           @media only screen and (min-width : e-bootstrap-md)
             width 33%
-            padding 20px 20px
-            text-decoration none
-            color #FFFFFF
-            float left
+
           &:hover,&.active
             background-color #FFFFFF
             color #666666
@@ -130,6 +132,9 @@
     @media only screen and (min-width : e-bootstrap-sm)
       bottom  5%
       background-color transparent
+      ul li i
+        color #ffffff
+
     ul
       margin 0
       padding 0
@@ -138,5 +143,4 @@
       li
         display inline
         margin 5px
-        i
-          color #ffffff
+

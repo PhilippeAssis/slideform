@@ -72,23 +72,6 @@
 .slide-form.review .slide-form-item .options {
   display: none;
 }
-.slide-form.review .slide-form-item .yes,
-.slide-form.review .slide-form-item .no {
-  transition-property: all;
-  transition-duration: 0.05s;
-  transition-timing-function: ease-in-out;
-  transition-delay: 0s;
-  -webkit-transition-property: all;
-  -webkit-transition-duration: 0.05s;
-  -webkit-transition-timing-function: ease-in-out;
-  -webkit-transition-delay: 0s;
-  margin: 20px;
-  opacity: 0.5;
-}
-.slide-form.review .slide-form-item .yes.active,
-.slide-form.review .slide-form-item .no.active {
-  opacity: 1;
-}
 .slide-form .slide-form-item {
   position: fixed;
   top: 50%;
@@ -159,18 +142,6 @@
   margin-top: 20px;
   float: none;
 }
-.slide-form .yes,
-.slide-form .no {
-  transition-property: all;
-  transition-duration: 0.05s;
-  transition-timing-function: ease-in-out;
-  transition-delay: 0s;
-  -webkit-transition-property: all;
-  -webkit-transition-duration: 0.05s;
-  -webkit-transition-timing-function: ease-in-out;
-  -webkit-transition-delay: 0s;
-  margin: 20px;
-}
 .slide-form .listSelect .groups {
   list-style: none;
   list-style-position: inside;
@@ -192,6 +163,10 @@
   -webkit-transition-timing-function: ease-in-out;
   -webkit-transition-delay: 0s;
   width: 100%;
+  padding: 20px 20px;
+  text-decoration: none;
+  float: left;
+  cursor: pointer;
 }
 @media only screen and (min-width: 768px) {
   .slide-form .listSelect .groups li a {
@@ -201,10 +176,6 @@
 @media only screen and (min-width: 992px) {
   .slide-form .listSelect .groups li a {
     width: 33%;
-    padding: 20px 20px;
-    text-decoration: none;
-    color: #fff;
-    float: left;
   }
 }
 .slide-form .listSelect .groups li a:hover,
@@ -228,6 +199,9 @@
     bottom: 5%;
     background-color: transparent;
   }
+  .slide-form .status ul li i {
+    color: #fff;
+  }
 }
 .slide-form .status ul {
   margin: 0;
@@ -238,7 +212,4 @@
 .slide-form .status ul li {
   display: inline;
   margin: 5px;
-}
-.slide-form .status ul li i {
-  color: #fff;
 }
