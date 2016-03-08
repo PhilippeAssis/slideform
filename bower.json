@@ -11,7 +11,7 @@
     "slide"
   ],
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://github.com/PhilippeAssis/slideform",
   "ignore": [
     "**/.*",
     "node_modules",
