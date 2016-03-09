@@ -168,9 +168,7 @@
             .on('review', obj.target.review)
             .on('click', '.prev', obj.target.prev)
             .on('click', '.next', obj.target.next)
-            .on('click', '.end', obj.target.end)
             .on('click', '.selections a', obj.target.selections)
-            .on('click', '.send, .submit', obj.target.result);
 
         obj.target.addClass('slide-form');
 
