@@ -1,6 +1,6 @@
 ## SlideForm
 
-Para ver os exemplos contidos na biblioteca, é necessário o download dos components listados no bower, para isso, na raiz da biblioteca, use:
+Para ver os exemplos contidos na biblioteca, é necessário o download dos componentes listados no bower, para isso, na raiz da biblioteca, use:
 
 `bower install`
 
@@ -17,8 +17,14 @@ var myForm = $('#myForm').slideform()
 Para executar callback's nos eventos de transição dos quadros use:
 
 ```javascript
-//to next myForm.beforeNext = function(){ //... } 
-//to preview myForm.beforePrev = function(){ //... }
+//to next 
+    myForm.beforeNext = function(){ 
+                                    //... 
+                                    } 
+//to preview 
+    myForm.beforePrev = function(){ 
+                                    //... 
+                                    }
 ```
 
 #### Eventos
