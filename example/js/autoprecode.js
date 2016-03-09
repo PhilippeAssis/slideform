@@ -1,10 +1,13 @@
 (function ($) {
-    $.fn.autoprecode = function (targets) {
+    $.fn.autoprecode = function (targets, customOpt) {
         "use strict";
 
         var opt = {
-            'type': 'link'
+            'type': 'link',
+            'code' : false
         }
+
+        $.extend(opt, customOpt);
 
         var base = $('<div>').addClass('autoprecode');
 
@@ -23,27 +26,36 @@
 
             'generate': function () {
                 for (var i = 0; i < obj.targets.length; i++) {
-                    var add = null, pre = null;
+                    var add = null, pre = null, content = '';
                     var target = $(obj.targets[i]);
                     var targetClone = target.clone()
                     var cBase = base.clone();
                     $('.no-autoprecode', targetClone).remove();
-                    var html = obj.fn.escapeHtml(targetClone.html())
+                    var html = obj.fn.escapeHtml(targetClone[0].outerHTML)
+
+                    var code = target.data('code');
+
+                    if(!code && opt.code != false)
+                        code = opt.code;
 
                     if (opt.type == 'link') {
-                        add = $('<a>').addClass('link').text("Ver esse código");
-                        pre = $('<pre>').addClass('hide')
+                        add = $('<a>').addClass('link').text("Ver esse cÃ³digo");
+                        cBase.append(add);
                     }
 
-                    pre.html(html);
+                    pre = $('<pre>').addClass('hide')
 
-                    if (add)
-                        cBase.append(add);
 
-                    if (pre)
-                        cBase.append(pre);
+                    if(code){
+                        code = $('<code>').addClass(code).html(html);
+                        pre.append(code);
+                    }
+                    else
+                        pre.html(html);
 
-                    target.append(cBase[0].outerHTML)
+                    cBase.append(pre)
+
+                    target.append(cBase[0].outerHTML);
                 }
             }
         }
@@ -53,11 +65,11 @@
             var $this = $(this)
             var parent = $this.parents('.autoprecode');
             if (!$this.hasClass('open')) {
-                $this.text('Esconder código').addClass('open')
+                $this.text('Esconder cÃ³digo').addClass('open')
                 $('pre', parent).removeClass('hide')
             }
             else {
-                $this.text('Ver esse código').removeClass('open')
+                $this.text('Ver esse cÃ³digo').removeClass('open')
                 $('pre', parent).addClass('hide')
             }
         })

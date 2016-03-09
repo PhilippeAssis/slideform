@@ -1,5 +1,10 @@
 @import "../../bower_components/stylus-essential/essential.styl"
 
+$sections-a-color-hover-active = #666666
+$sections-a-background-hover-active = #ffffff
+$status-sm-background = #000000
+$status-sm-color = #ffffff
+
 *
   e-transition(all, 1s)
 
@@ -8,7 +13,7 @@
     display none
   .start
     display block
-  .options
+  .footer
     clear left
     float left
     width 100%;
@@ -31,26 +36,29 @@
     .slide-form-item
       e-transition(left top bottom right , 0s)
       position static
-      margin-bottom 30px
       transform none
       margin 0 auto
-      .options
+      .footer
         display none
 
   .slide-form-item
     position fixed
-    top 50%
-    transform translate(-50%, -50%)
+    top 0%
+    transform translate(-50%, 0%)
     width 100vw
     height auto
-    max-height 100vh
-    padding 10px 10px 40px 10px
+    max-height calc(100vh - 30px)
+    padding 10px 10px 10px 10px
     overflow auto
     @media only screen and (min-width : e-bootstrap-sm)
+      top 50%
+      transform translate(-50%, -50%)
+      max-height calc(100vh - 20%)
       width 70vw
       height auto
       padding 10px 10px 10px 10px
     @media only screen and (min-width : e-bootstrap-md)
+      max-height calc(100vh - 20%)
       width 50vw
     &.center
       left 50%
@@ -74,6 +82,9 @@
       width calc(100% - 10px)
       float left
 
+    .footer
+      padding 10px
+
     .send
       float left
       clear left
@@ -92,48 +103,47 @@
     margin-top 20px
     float none
 
-  .listSelect
-    .groups
-      list-style none
-      list-style-position inside
-      margin 0
-      padding 0
-      text-align center
-      li
-        display inline
-        a
-          word-break break-all
-          e-transition(all, 0.2s)
-          width 100%
-          padding 20px 20px
-          text-decoration none
-          float left
-          cursor pointer
+  .selections
+    list-style none
+    list-style-position inside
+    margin 0
+    padding 0
+    text-align center
+    li
+      display inline
+      a
+        e-transition(all, 0.2s)
+        width 100%
+        padding 20px 20px
+        text-decoration none
+        float left
+        cursor pointer
 
-          @media only screen and (min-width : e-bootstrap-sm)
-            width 50%
-          @media only screen and (min-width : e-bootstrap-md)
-            width 33%
+        @media only screen and (min-width : e-bootstrap-sm)
+          width 50%
+        @media only screen and (min-width : e-bootstrap-md)
+          width 33%
 
-          &:hover,&.active
-            background-color #FFFFFF
-            color #666666
+        &:hover,&.active
+          background-color $sections-a-background-hover-active
+          color $sections-a-color-hover-active
 
   .status
-    width 100%
+    width auto
     position fixed
     height 30px
-    padding-top 5px
-    bottom  0
+    padding-top 8px
+    bottom  5%
     left 50%
     transform translate(-50%, 0%)
     text-align center
-    background-color #111111
-    @media only screen and (min-width : e-bootstrap-sm)
-      bottom  5%
-      background-color transparent
+    background-color transparent
+    @media only screen and (max-width : e-bootstrap-sm)
+      width 100%
+      bottom  0
+      background-color $status-sm-background
       ul li i
-        color #ffffff
+        color $status-sm-color
 
     ul
       margin 0
@@ -143,4 +153,7 @@
       li
         display inline
         margin 5px
+
+
+
 

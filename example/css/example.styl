@@ -1,13 +1,48 @@
+@import "../../bower_components/stylus-essential/essential.styl"
+
 $animateArgs = AnimationName 40s linear infinite;
+$color-base = #ffffff;
+$color-sec = #65cb30
+$gradient()
+  background: linear-gradient(45deg, #3a3b72, #b92f87, #000000);
+
+*
+  e-transition(top, 0s)
+  e-transition(left, 0.5s)
+
+@media only screen and (min-width: 768px)
+  .slide-form .status ul li i
+    color: $color-base !important
+
+.code
+  text-align left
+
+a
+  color: $color-base
+  &:hover
+    color: $color-sec
+
+.autoprecode
+  padding 0 10px
+  a
+    text-decoration none
 
 body, html
   background-color transparent
 
 body
-  .body
-    text-align center
+  color $color-base
 
-  background: linear-gradient(45deg, #d0e3f4, #d7eee3, #eeeedd);
+  h1,h2,h3,h4,h5,p, input
+    color $color-base !important
+
+  input[type="checkbox"]:after, .checkbox input[type="checkbox"]:after, .checkbox-inline input[type="checkbox"]:after
+    border: 2px solid $color-base
+
+  .body
+    text-align justify
+
+  $gradient()
   background-size: 600% 600%;
   -webkit-animation: $animateArgs
   -moz-animation:$animateArgs
@@ -35,5 +70,20 @@ body
     100%{background-position:0% 50%}
   }
 
+/**
+*Bootstrap Theme Paper
+**/
+textarea:focus, textarea.form-control:focus, input.form-control:focus, input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=number]:focus, [type=text].form-control:focus, [type=password].form-control:focus, [type=email].form-control:focus, [type=tel].form-control:focus, [contenteditable].form-control:focus
+  -webkit-box-shadow: inset 0 -2px 0 $color-sec;
+  box-shadow: inset 0 -2px 0 $color-sec;
+
+input[type="checkbox"]:checked:after, .checkbox input[type="checkbox"]:checked:after, .checkbox-inline input[type="checkbox"]:checked:after
+  background-color: $color-sec;
+  border-color: $color-sec;
+
++e-placeholder()
+  color: $color-base !important
 
 
+.btn-success
+  background-color $color-sec

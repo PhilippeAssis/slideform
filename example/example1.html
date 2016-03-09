@@ -1,9 +1,12 @@
 <html>
 <head>
+    <meta charset="UTF-8">
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../bower_components/bootswatch-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../dist/css/slideform.css">
     <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="../bower_components/highlightjs/styles/github.css">
     <link rel="stylesheet" href="css/autoprecode.css">
     <link rel="stylesheet" href="css/example.css">
 </head>
@@ -17,7 +20,7 @@
             <p>O Slide Form é uma biblioteca para aprimoramento do visual e experiencia para formulários web.<br>Tem com
                 objetivo transformar um simples formulário em um formulário dinamico, bonito e simples.</p>
         </div>
-        <div class="options">
+        <div class="footer">
             <a href="" class="btn btn-default next">Próximo</a>
         </div>
     </section>
@@ -30,7 +33,7 @@
                 <input name="texto" type="text" class="form-control" placeholder="Digite qualquer coisa aqui!">
             </div>
         </div>
-        <div class="options">
+        <div class="footer">
             <a href="" class="btn btn-default prev">Voltar</a>
             <a href="" class="btn btn-success next">Próximo</a>
         </div>
@@ -61,18 +64,32 @@
                 </label>
             </div>
         </div>
-        <div class="options">
+        <div class="footer">
             <a href="" class="btn btn-default prev">Voltar</a>
             <a href="" class="btn btn-success next">Próximo</a>
         </div>
     </form>
-    <form class="listSelect">
-        <input name="list" type="hidden" required>
+    <form>
+        <input name="selections" type="hidden" data-required="Você precisa selecionar um item para continuar">
         <div class="title">
-            <h3>Selecinem um item</h3>
+            <h3>.selections</h3>
         </div>
         <div class="body">
-                <ul class="groups">
+            <p class="no-autoprecode">
+                Esse é um modelo de lista para seleção de itens. Você pode subistitulo pelo tradicional select ou radio.<br>Nesse exemplo usamos <strong>data-required</strong> como atributo da input, assim, caso não seja selecionado nenhum item, a função <strong>required()</strong> será chamada.
+            </p>
+            <h4 class="no-autoprecode">Required</h4>
+            <p class="no-autoprecode">
+                Assim como <strong>beforeNext</strong> e <strong>beforePrev</strong>, você pode criar seu próprio <strong>required</strong> atribuindo ao slideform. Assim você obterá o retorno de todos os itens requiridos do quadro atual que não forão preenchidos ou marcados.<br>Você pode ativar o requirimento de um item com o atributo <strong>data-required</strong> contendo uma mensagem de alerta, exemplo: <em>data-required="Esse item é obrigatório"</em>, ou usando somente o atributo required do HTML5, nesse caso você só terá de retorno o elemento em ação.
+            </p>
+            <pre class="code no-autoprecode"><code class="javascript">var myForm = $("#myForm").slideform()
+
+myForm.required = function(response){
+    console.log(response)
+}
+            </code></pre>
+            <p>Selecione um item abaixo, ou não selecione para ver o alerta de requerimento.</p>
+                <ul class="selections">
                     <li>
                         <a data-value="1">Item 1</a>
                     </li>
@@ -93,7 +110,7 @@
                     </li>
                 </ul>
         </div>
-        <div class="options">
+        <div class="footer">
             <a href="" class="btn btn-default prev">Voltar</a>
             <a href="" class="btn btn-success next">Próximo</a>
         </div>
@@ -104,15 +121,14 @@
         </div>
         <div class="body">
             <p>
-                O código a baixo é um exemplo do envio do formulário.<br>
+                O código a baixo é um exemplo de envio do formulário.<br>
                 Primeiro ele identifica qual o quadro que vai enviar o fomulário, no nosso caso o "sendForm" depois ele
                 pega todos os valores usando
                 <stron>this.result()</stron>
                 , envia o formulário (essa é a parte comentada, nesse exemplo ele só exibe os dados enviados no próximo
                 quadro) e passa para o próximo quadro usando <strong>this.nextSection()</strong>
             </p>
-            <pre class="no-autoprecode">
-var myForm = $("#myForm").slideform();
+            <pre class="code no-autoprecode"><code class="javascritp">var myForm = $("#myForm").slideform();
 
 myForm.beforeNext = function () {
     if (this.current.name == 'sendForm') {
@@ -130,9 +146,9 @@ myForm.beforeNext = function () {
 
     return true;
 }
-            </pre>
+            </code></pre>
         </div>
-        <div class="options">
+        <div class="footer">
             <a href="" class="btn btn-default prev">Voltar</a>
             <a href="" class="btn btn-success next">Próximo</a>
         </div>
@@ -142,34 +158,67 @@ myForm.beforeNext = function () {
             <h3>Veja os seus dados enviados</h3>
         </div>
         <div class="body">
-            <pre id="result"></pre>
+            <pre><code id="result" class="json"></code></pre>
+            <p>
+                Esses são os dados que você enviou, você pode trata-los usando os callbacks <strong>beforeNext</strong> ou <strong>beforePrev</strong>
+            </p>
+            <div class="footer">
+                <a href="" class="btn btn-default prev">Voltar</a>
+                <a href="" class="btn btn-success next">Próximo</a>
+            </div>
         </div>
     </section>
 
 </div>
 
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="../bower_components/highlightjs/highlight.pack.min.js"></script>
 <script src="../dist/js/slideform.js"></script>
 <script src="js/autoprecode.js"></script>
 <script>
     $(function () {
-        $(document).autoprecode('section, form');
         var myForm = $("#myForm").slideform();
+
         myForm.beforeNext = function () {
             console.log('beforeNext')
             if (this.current.name == 'sendForm') {
                 console.log('sendForm')
                 var result = this.result();
-                console.log(myForm.result())
-                $('#result').text(JSON.stringify(result));
+
+                $('#result').html(JSON.stringify(result, null, 2)).each(function(i, block) {
+                    hljs.highlightBlock(block);
+                });
+
                 /*
-                 $.post('submit.php', result, function (data) {
-                 console.log(data)
-                 })
+                     $.post('submit.php', result, function (data) {
+                     console.log(data)
+                     })
                  */
             }
             return true;
         }
+
+        /**
+         * highlightjs
+        * */
+        hljs.initHighlightingOnLoad();
+
+        /**
+         * autoprecode
+         * */
+        $("#myForm").autoprecode('section, form', {
+            'code' : 'html'
+        });
+
+        /**
+        * malihu-custom-scrollbar-plugin
+        * */
+        $("section, form").mCustomScrollbar({
+            theme: "minimal-dark",
+            scrollbarPosition: "outside",
+            scrollInertia: 0
+        });
     })
 </script>
 

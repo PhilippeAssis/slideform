@@ -16,18 +16,28 @@
             'nextSection': function () {
                 if (obj.target.current.object) {
                     var required = obj.target.current.object.find('[required],[data-required]');
+                    var itens = new Array();
                     if (required.length) {
                         for (var i = 0; i < required.length; i++) {
                             var item = $(required[i]);
 
                             if (!item.val()) {
+                                var response = {
+                                    'obj': item
+                                }
+
                                 var text = $(required[i]).data('required');
 
                                 if (text)
-                                    obj.target.alert(text);
+                                    response.text = text;
 
-                                return false;
+                                itens.push(response);
                             }
+                        }
+
+                        if (itens.length > 0) {
+                            obj.target.required(itens);
+                            return false;
                         }
                     }
                 }
@@ -98,14 +108,7 @@
                 obj.target.trigger('nextSection');
                 return false;
             },
-            'end': function () {
-                if (obj.target.beforeEnd() === false)
-                    return false;
-
-                obj.target.trigger('review');
-                return false;
-            },
-            'groups': function () {
+            'selections': function () {
                 var parent = $(this).parents('.slide-form-item'),
                     input = parent.find('input');
 
@@ -136,17 +139,20 @@
 
                 return result;
             },
-            'alert': function (text) {
-                if ($("#customAlert").css('display') == "block")
-                    return;
+            'required': function (response) {
+                var text = new Array();
 
-                alert(text)
+                for(var i = 0; i < response.length; i++){
+                    if(response[i].text);
+                        text.push(response[i].text)
+                }
+
+                if(text.length > 0)
+                    alert(text.join("\n"));
             },
             'beforeNext': function () {
             },
             'beforePrev': function () {
-            },
-            'beforeEnd': function () {
             }
         };
 
@@ -163,7 +169,7 @@
             .on('click', '.prev', obj.target.prev)
             .on('click', '.next', obj.target.next)
             .on('click', '.end', obj.target.end)
-            .on('click', '.groups a', obj.target.groups)
+            .on('click', '.selections a', obj.target.selections)
             .on('click', '.send, .submit', obj.target.result);
 
         obj.target.addClass('slide-form');

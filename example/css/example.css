@@ -1,17 +1,70 @@
+* {
+  transition-property: top;
+  transition-duration: 0s;
+  transition-timing-function: ease-in-out;
+  transition-delay: 0s;
+  -webkit-transition-property: top;
+  -webkit-transition-duration: 0s;
+  -webkit-transition-timing-function: ease-in-out;
+  -webkit-transition-delay: 0s;
+  transition-property: left;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in-out;
+  transition-delay: 0s;
+  -webkit-transition-property: left;
+  -webkit-transition-duration: 0.5s;
+  -webkit-transition-timing-function: ease-in-out;
+  -webkit-transition-delay: 0s;
+}
+@media only screen and (min-width: 768px) {
+  .slide-form .status ul li i {
+    color: #fff !important;
+  }
+}
+.code {
+  text-align: left;
+}
+a {
+  color: #fff;
+}
+a:hover {
+  color: #65cb30;
+}
+.autoprecode {
+  padding: 0 10px;
+}
+.autoprecode a {
+  text-decoration: none;
+}
 body,
 html {
   background-color: transparent;
 }
 body {
-  background: linear-gradient(45deg, #d0e3f4, #d7eee3, #eed);
+  color: #fff;
+  background: linear-gradient(45deg, #3a3b72, #b92f87, #000);
   background-size: 600% 600%;
   -webkit-animation: AnimationName 40s linear infinite;
   -moz-animation: AnimationName 40s linear infinite;
   -o-animation: AnimationName 40s linear infinite;
   animation: AnimationName 40s linear infinite;
 }
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body p,
+body input {
+  color: #fff !important;
+}
+body input[type="checkbox"]:after,
+body .checkbox input[type="checkbox"]:after,
+body .checkbox-inline input[type="checkbox"]:after {
+  border: 2px solid #fff;
+}
 body .body {
-  text-align: center;
+  text-align: justify;
 }
 @-webkit-keyframes AnimationName {
   0% {
@@ -89,4 +142,43 @@ body .body {
   100% {
     background-position: 0% 50%;
   }
+}
+/**
+*Bootstrap Theme Paper
+**/
+textarea:focus,
+textarea.form-control:focus,
+input.form-control:focus,
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=email]:focus,
+input[type=number]:focus,
+[type=text].form-control:focus,
+[type=password].form-control:focus,
+[type=email].form-control:focus,
+[type=tel].form-control:focus,
+[contenteditable].form-control:focus {
+  -webkit-box-shadow: inset 0 -2px 0 #65cb30;
+  box-shadow: inset 0 -2px 0 #65cb30;
+}
+input[type="checkbox"]:checked:after,
+.checkbox input[type="checkbox"]:checked:after,
+.checkbox-inline input[type="checkbox"]:checked:after {
+  background-color: #65cb30;
+  border-color: #65cb30;
+}
+::-webkit-input-placeholder {
+  color: #fff !important;
+}
+:-moz-placeholder {
+  color: #fff !important;
+}
+::-moz-placeholder {
+  color: #fff !important;
+}
+:-ms-input-placeholder {
+  color: #fff !important;
+}
+.btn-success {
+  background-color: #65cb30;
 }
